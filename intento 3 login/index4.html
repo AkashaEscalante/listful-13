@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --color-primary: #6f4e37; /* Marrón oscuro */
+            --color-secondary: #a67c52; /* Marrón medio */
+            --color-accent: #ddbc9b; /* Marrón claro */
+            --color-background: #f7f3e9; /* Beige claro */
+            --color-white: #ffffff;
+        }
+
+        /* Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--color-background);
+            color: var(--color-primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .header-title {
+            font-size: 2.5rem;
+            color: var(--color-primary);
+        }
+
+        .header-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+        }
+
+        .task-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        .task-input {
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid var(--color-accent);
+            border-radius: 5px;
+            background-color: var(--color-background);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .task-input:focus {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            outline: none;
+        }
+
+        .task-submit-btn {
+            padding: 12px;
+            font-size: 1rem;
+            background-color: var(--color-secondary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .task-submit-btn:hover {
+            background-color: var(--color-primary);
+        }
+
+        .task-list {
+            list-style: none;
+            margin-top: 20px;
+            padding: 0;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .task-list li {
+            background-color: var(--color-accent);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .task-list li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .task-list .task-name {
+            font-weight: bold;
+            color: var(--color-primary);
+        }
+
+        .task-list .task-date {
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+
+        .delete-btn {
+            padding: 5px 10px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .delete-btn:hover {
+            background-color: #4a3326;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1 class="header-title">ListFul</h1>
+        <p class="header-subtitle">Tareas Pendientes</p>
+    </header>
+
+    <section>
+        <form id="taskForm" class="task-form">
+            <input type="text" id="taskName" class="task-input" placeholder="Nombre de la tarea" required>
+            <input type="datetime-local" id="taskDueDate" class="task-input" required>
+            <button type="submit" class="task-submit-btn">Agregar Tarea</button>
+        </form>
+        <ul id="taskList" class="task-list"></ul>
+    </section>
+
+    <script>
+        document.getElementById('taskForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const taskName = document.getElementById('taskName').value;
+            const taskDueDate = document.getElementById('taskDueDate').value;
+
+            if (taskName && taskDueDate) {
+                const taskList = document.getElementById('taskList');
+                
+                // Crear el elemento de la tarea
+                const taskItem = document.createElement('li');
+                taskItem.innerHTML = `
+                    <span class="task-name">${taskName}</span>
+                    <span class="task-date">${new Date(taskDueDate).toLocaleString()}</span>
+                    <button class="delete-btn">Eliminar</button>
+                `;
+
+                // Añadir función de eliminar tarea
+                taskItem.querySelector('.delete-btn').addEventListener('click', function() {
+                    taskItem.remove();
+                });
+
+                taskList.appendChild(taskItem);
+
+                // Limpiar el formulario
+                document.getElementById('taskForm').reset();
+            }
+        });
+    </script>
+</body>
+</html>

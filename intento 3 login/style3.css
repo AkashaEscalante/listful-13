@@ -1,0 +1,216 @@
+:root {
+    --color-primary: #6f4e37; /* Marrón oscuro */
+    --color-secondary: #a67c52; /* Marrón medio */
+    --color-accent: #ddbc9b; /* Marrón claro */
+    --color-background: #f7f3e9; /* Beige claro */
+    --color-white: #ffffff;
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+    line-height: 1.6;
+}
+
+/* Botón de inicio de sesión */
+.login-btn-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.login-btn {
+    padding: 12px 25px;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.login-btn:hover {
+    background-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    text-align: center;
+    padding: 20px;
+}
+
+.header-logo {
+    width: 80px;
+    margin-bottom: 10px;
+}
+
+.header-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.header-subtitle {
+    font-size: 1.2rem;
+    font-style: italic;
+}
+
+/* Navegación */
+.navigation {
+    display: flex;
+    justify-content: center;
+    background-color: var(--color-secondary);
+    padding: 10px;
+}
+
+.nav-link {
+    color: var(--color-white);
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    background-color: var(--color-primary);
+}
+
+.main-container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--color-white);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+    color: var(--color-primary);
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Formulario de tareas */
+.task-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.task-input {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 5px;
+    background-color: var(--color-background);
+    transition: box-shadow 0.3s ease;
+}
+
+.task-input:focus {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    outline: none;
+}
+
+.task-submit-btn {
+    padding: 12px;
+    font-size: 1rem;
+    background-color: var(--color-secondary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.task-submit-btn:hover {
+    background-color: var(--color-primary);
+}
+
+/* Lista de tareas */
+.task-list {
+    list-style: none;
+    margin-top: 20px;
+    padding: 0;
+}
+
+.task-list li {
+    background-color: var(--color-accent);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.task-list li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+}
+
+.task-list li .task-name {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+.task-list li .task-date {
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+}
+
+.footer {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-link,
+.footer-social-link {
+    color: var(--color-white);
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.footer-link:hover,
+.footer-social-link:hover {
+    color: var(--color-accent);
+}
+
+@media (max-width: 600px) {
+    .header-title {
+        font-size: 1.8rem;
+    }
+
+    .footer-text {
+        font-size: 14px;
+    }
+
+    .footer-link,
+    .footer-social-link {
+        display: block;
+        margin: 5px 0;
+    }
+}
+
